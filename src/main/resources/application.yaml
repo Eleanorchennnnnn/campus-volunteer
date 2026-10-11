@@ -1,0 +1,29 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: campus-volunteer
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:3306/campus_volunteer?useSSL=false&serverTimezone=UTC
+    username: "${MYSQL_USERNAME:root}"
+    password: "${MYSQL_PASSWORD:}" # 通过环境变量或 application-local.yaml 注入，勿提交真实密码
+  redis:
+    host: "${REDIS_HOST:127.0.0.1}"
+    port: 6379
+    password: "${REDIS_PASSWORD:}"
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 1
+        time-between-eviction-runs: 10s
+  jackson:
+    default-property-inclusion: non_null # JSON处理时忽略非空字段
+mybatis-plus:
+  type-aliases-package: com.campus.volunteer.entity # 别名扫描包
+upload:
+  dir: uploads # 图片上传目录（相对工作目录，可改为绝对路径），静态访问 /uploads/**
+logging:
+  level:
+    com.campus.volunteer: debug

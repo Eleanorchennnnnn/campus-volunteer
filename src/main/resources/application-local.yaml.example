@@ -1,0 +1,13 @@
+# 本地私有配置模板：复制本文件为 application-local.yaml 并填入真实连接信息
+# application-local.yaml 已被 .gitignore 忽略，不会提交到仓库
+#
+# 激活方式（二选一）：
+#   1. IDEA 运行配置 -> CampusVolunteerApplication -> Active profiles 填 local
+#   2. 启动参数追加 --spring.profiles.active=local
+spring:
+  datasource:
+    username: root
+    password: "你的MySQL密码"
+  redis:
+    host: 127.0.0.1
+    password: "你的Redis密码"
